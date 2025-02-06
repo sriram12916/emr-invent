@@ -1,0 +1,35 @@
+/* *{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+} */
+.main{
+    width: 100%;
+    padding: 20px;
+}
+.link{
+    text-decoration: none;
+}
+.container{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: 100% !important;
+    max-width: 100% !important;
+
+ 
+  
+}
+.sidebar{
+    padding-top: 10px;
+    height: 100vh;
+    background-color: rgb(10, 141, 192);
+    width: 20%;
+
+   
+}
+.item-text{
+    color: white;
+    padding: 7px;
+   
+}

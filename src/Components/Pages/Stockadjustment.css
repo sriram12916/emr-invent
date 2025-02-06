@@ -1,0 +1,36 @@
+.p1{
+    margin-top: 30px;
+    font-weight: 500;
+}
+.inputs{
+    margin-left: 50px !important;
+}
+.inputs1{
+    margin-left: 60px !important;
+
+}
+.inputs2{
+    margin-left: 62px !important;
+
+}
+.inputs3{
+    margin-left: 90px
+}
+.inputs4{
+    margin-left: 70px !important
+}
+.inputs5{
+    margin-left: 20px !important
+}
+.inputs6{
+    margin-left: 70px !important
+}
+.inputs7{
+    margin-left: 100px !important
+}
+.card{
+    background-color:white;
+    display: flex;
+    justify-content: center;
+
+}
