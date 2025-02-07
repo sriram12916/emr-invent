@@ -1,17 +1,19 @@
 import React, { useState } from 'react'
-import {Table} from '@mui/material';
-import {TableBody} from '@mui/material';
-import {TableCell} from '@mui/material';
-import {TableContainer} from '@mui/material';
-import {TableHead} from '@mui/material';
-import {TableRow} from '@mui/material';
-import {Paper} from '@mui/material';
+import { Table } from '@mui/material';
+import { TableBody } from '@mui/material';
+import { TableCell } from '@mui/material';
+import { TableContainer } from '@mui/material';
+import { TableHead } from '@mui/material';
+import { TableRow } from '@mui/material';
+import { Paper } from '@mui/material';
 import "./Pages.css";
 import { TextField, Box } from "@mui/material";
 import { Dialog } from 'primereact/dialog';
-import 'primereact/resources/themes/lara-light-blue/theme.css';  
+import 'primereact/resources/themes/lara-light-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
+import Select from '@mui/material/Select';
+import { motion } from "framer-motion";
 
 
 
@@ -36,33 +38,44 @@ const Itemstatus = () => {
             <div className='container-fluid'>
 
                 <div className='card' >
-                    <div className='row d-flex'>
-                        <div className='col p-2'>
+                    <div className='row card-details'>
+                        <div className='col-lg-5 p-2'>
                             <form>
                                 <div className='label-input '>
-                                    <label className='mx-2'>Product Name</label>
-                                    <input className='form-control w-50 mx-3'
-                                        id=''
-                                        name='Product Name'
+                                    <label className=''>Product Name</label>
+
+                                    <TextField
+                                        className='input-text'
+                                        id="outlined-size-small"
+                                        size="small"
                                     />
                                 </div>
 
 
                                 <div className='label-input mt-2 p-0'>
-                                    <label className='mx-2'>Stock Availability</label>
-                                    <select className='form-control w-50'>
+                                    <label className='lablestock'>Stock Availability</label>
+
+                                    <Select
+                                        className='inputs1'
+                                        labelId="demo-multiple-name-label"
+                                        id="demo-multiple-name"
+                                    >
                                         <option>All</option>
                                         <option>Stock Available</option>
                                         <option>No stock</option>
                                         <option> Below Recorder</option>
-                                    </select>
+                                    </Select>
+
                                 </div>
 
                                 <div className='label-input mt-2 '>
-                                    <label className='mx-2'>Product Category</label>
-                                    <select className='form-control w-50 me-1'>
-                                        <option></option>
-                                    </select>
+                                    <label className='labelpro'>Product Category</label>
+                                    <Select
+                                        className='inputs2'
+                                        labelId="demo-multiple-name-label"
+                                        id="demo-multiple-name"
+                                    >
+                                    </Select>
                                 </div>
 
                             </form>
@@ -70,43 +83,41 @@ const Itemstatus = () => {
 
                         </div>
 
-                        <div className='col p-2'>
-                            <div className='d-flex p-2'>
+                        <div className='col p-2 second-col'>
+                            <div className='d-flex p-2 radio-list'>
                                 <div>
-                                    <label className='mx-1'>Stock Unit</label>
-                                    <input className='form-check-input '
-                                        type='radio'
-                                        name='Product Name'
-                                    />
+                                    <label className=''>Stock Unit</label>
+                                    <input className='form-check-input' type='radio' name='stock' />
                                 </div>
                                 <div className='mx-2'>
-                                    <label className='mx-1'>Sale Unit</label>
-                                    <input className='form-check-input'
-                                        type='radio'
-                                        name='Product Name'
-                                    />
+                                    <label className=''>Sale Unit</label>
+                                    <input className='form-check-input' type='radio' name='stock' />
                                 </div>
                                 <div className='mx-2'>
-                                    <label className='mx-1'>Purchase Unit</label>
-                                    <input className='form-check-input'
-                                        type='radio'
-                                        name='Product Name'
-                                    />
+                                    <label className=''>Purchase Unit</label>
+                                    <input className='form-check-input' type='radio' name='stock' />
+
                                 </div>
 
 
                             </div>
                             <div className='d-flex '>
-                                <label>Branch&Speciality</label>
-                                <select className='form-control w-50 mx-2'>
-                                    <option></option>
-                                </select>
+                                <label className='labels'>Branch&Speciality</label>
+                                <Select
+                                    className='inputs3'
+                                    labelId="demo-multiple-name-label"
+                                    id="demo-multiple-name"
+                                >
+                                </Select>
                             </div>
                             <div className='d-flex mt-2'>
-                                <label className='me-4'>Supplier</label>
-                                <select className='form-control w-50 mx-5'>
-                                    <option></option>
-                                </select>
+                                <label className='labels2'>Supplier</label>
+                                <Select
+                                    className='inputs4'
+                                    labelId="demo-multiple-name-label"
+                                    id="demo-multiple-name"
+                                >
+                                </Select>
                             </div>
 
                         </div>
@@ -118,8 +129,8 @@ const Itemstatus = () => {
                         </Box>
 
                     </div>
-
                 </div>
+
                 <div className='Table-Button-Container'>
                     <Box  >
                         <button className="buttons" onClick={handleDisplay}>
@@ -131,145 +142,42 @@ const Itemstatus = () => {
                         <button className="buttons">
                             Category All </button>
                     </Box>
-                    {showTable && (
-                        <div className='card'>
+                    <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: showTable ? 1 : 0, y: showTable ? 0 : -10 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.5 }}
+                        style={{ display: showTable ? "block" : "none" }} 
+                    >
+                        {showTable && (
 
-                            <p className='p'>Product Stock Transaction Details</p>
+                            <div className='card'>
 
-                            <div className='card-body d-flex'>
-                                <div className='col'>
+                                <p className='p'>Product Stock Transaction Details</p>
 
-                                    <label className=' m-2 g-2'>Item Name</label>
-                                    <TextField
+                                <div className='card-body d-flex'>
+                                    <div className='col'>
 
-                                        id="outlined-size-small"
-                                        size="small"
-                                    />
-
-
-                                    <br></br>
-                                    <label className='mx-4'>Period</label>
-                                    <TextField
-                                        className='mx-2'
-                                        type='date'
-                                        id="outlined-size-small"
-                                        size="small"
-                                    />
-                                    <TextField
-                                        className='g-1'
-                                        type='date'
-                                        id="outlined-size-small"
-                                        size="small"
-                                    />
-                                </div>
-                                <div className='col'>
-
-                                    <label className=''>main store</label>
-                                    <TextField
-                                        className='mx-2'
-                                        id="outlined-size-small"
-                                        size="small"
-                                    />
-
-                                    <br></br>
-                                    <div className='mt-2'>
-                                        <label className='mx-2'>Speciality</label>
+                                        <label className=' m-2 g-2'>Item Name</label>
                                         <TextField
 
                                             id="outlined-size-small"
                                             size="small"
                                         />
-                                    </div>
-
-                                </div>
-
-                            </div>
-                            <div className='table-card-container'>
-                                <TableContainer component={Paper} className='TableContainer'>
-                                    <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
-                                        <TableHead className='tableHead'>
-                                            <TableRow className='tableRow'>
-                                                <TableCell align="right">S.No</TableCell>
-                                                <TableCell align="right" >Date</TableCell>
-                                                <TableCell align="right" > Type</TableCell>
-                                                <TableCell align="right" >Supplier</TableCell>
-                                                <TableCell align="right" >Barcode</TableCell>
-                                                <TableCell align="right" >Qty</TableCell>
-                                                <TableCell align="right" > Unit price</TableCell>
-                                                <TableCell align="right" >Stock  (in sale unit) in Main Store</TableCell>
-                                                <TableCell align="right" > Stock  (in sale unit) in Dept</TableCell>
 
 
-                                            </TableRow>
-                                        </TableHead>
-                                        <TableBody>
-                                          
-                                            <TableRow
-                                             
-                                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                            >
-
-                                                <TableCell align="right">{1}</TableCell>
-                                                <TableCell align="right">{2646546}</TableCell>
-                                                <TableCell align="right">{"Gel"}</TableCell>
-                                                <TableCell align="right">{'Anbu'}</TableCell>
-                                                <TableCell align="right" onClick={handleShow}>{247.00}</TableCell>
-                                                <TableCell align="right">{22}</TableCell>
-                                                <TableCell align="right">{12}</TableCell>
-                                                <TableCell align="right">{100}</TableCell>
-                                                <TableCell align="right">{150}</TableCell>
-                                                <TableCell align="right">{30}</TableCell>
+                                        <br></br>
+                                        <div className='date'>
 
 
-
-                                            </TableRow>
-                                            <TableRow>
-                                                <TableCell align="right">{1}</TableCell>
-                                                <TableCell align="right">{2646546}</TableCell>
-                                                <TableCell align="right">{"Gel"}</TableCell>
-                                          
-                                                <TableCell align="right">{247.00}</TableCell>
-                                                <TableCell align="right">{22}</TableCell>
-                                                <TableCell align="right">{12}</TableCell>
-                                                <TableCell align="right">{100}</TableCell>
-                                                <TableCell align="right">{150}</TableCell>
-                                                <TableCell align="right">{30}</TableCell>
-
-                                            </TableRow>
-
-                                        </TableBody>
-                                    </Table>
-                                </TableContainer>
-                            </div>
-
-                            <Dialog
-                                visible={visible}
-                               
-                                onHide={() => setVisible(false)}
-                                draggable={false}
-                                resizable={false}
-                                modal={true} 
-                            >
-                                <div className='card'>
-
-                                    <p className='p'>Stock details-Branch wise</p>
-
-                                    <div className='card-body d-flex'>
-                                        <div className='col-log-4'>
-                                            <label className=' m-2 g-2'>Item Name</label>
-                                            <TextField
-                                                id="outlined-size-small"
-                                                size="small"
-                                            />
-                                            
-                                            <br></br>
-                                            <label className='mx-2'>item unit</label>
+                                            <label className='mx-4'>Period</label>
                                             <TextField
                                                 className='mx-2'
                                                 type='date'
                                                 id="outlined-size-small"
                                                 size="small"
                                             />
+
                                             <TextField
                                                 className='g-1'
                                                 type='date'
@@ -277,95 +185,321 @@ const Itemstatus = () => {
                                                 size="small"
                                             />
                                         </div>
-                                        <div className='col'>
+                                    </div>
+                                    <div className='col'>
 
-                                            <label className=''>Item Category</label>
+                                        <label className=''>main store</label>
+                                        <TextField
+                                            className='mx-2'
+                                            id="outlined-size-small"
+                                            size="small"
+                                        />
+
+                                        <br></br>
+                                        <div className='mt-2'>
+                                            <label className='mx-2'>Speciality</label>
                                             <TextField
-                                                className='mx-2'
-                                                id="outlined-size-small"
-                                                size="small"
-                                            />
-                                            <label className=' m-2 g-2 '>Recorder Level</label>
-                                              <TextField
-                                                id="outlined-size-small"
-                                                size="small"
-                                            />
 
-                                            <br></br>
-                                            <div className='mt-2'>
-                                                <label className='mx-3'>Total Stock</label>
+                                                id="outlined-size-small"
+                                                size="small"
+                                            />
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div className='table-card-container'>
+                                    <TableContainer component={Paper} className='TableContainer'>
+                                        <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+                                            <TableHead className='tableHead'>
+                                                <TableRow className='tableRow'>
+                                                    <TableCell align="right">S.No</TableCell>
+                                                    <TableCell align="right" >Date</TableCell>
+                                                    <TableCell align="right" > Type</TableCell>
+                                                    <TableCell align="right" >Supplier</TableCell>
+                                                    <TableCell align="right" >Barcode</TableCell>
+                                                    <TableCell align="right" >Qty</TableCell>
+                                                    <TableCell align="right" > Unit price</TableCell>
+                                                    <TableCell align="right" onClick={handleShow}>Stock  (in sale unit) in Main Store</TableCell>
+                                                    <TableCell align="right" > Stock  (in sale unit) in Dept</TableCell>
+
+
+                                                </TableRow>
+                                            </TableHead>
+                                            <TableBody>
+
+                                                <TableRow
+
+                                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                                >
+
+                                                    <TableCell align="right">{1}</TableCell>
+                                                    <TableCell align="right" >{2646546}</TableCell>
+                                                    <TableCell align="right">{"Gel"}</TableCell>
+                                                    <TableCell align="right">{'Anbu'}</TableCell>
+                                                    <TableCell align="right" >{247.00}</TableCell>
+                                                    <TableCell align="right">{22}</TableCell>
+                                                    <TableCell align="right">{12}</TableCell>
+                                                    <TableCell align="right" >{100}</TableCell>
+                                                    <TableCell align="right" >{150}</TableCell>
+
+
+
+
+                                                </TableRow>
+                                                <TableRow>
+                                                    <TableCell align="right">{1}</TableCell>
+                                                    <TableCell align="right">{2646546}</TableCell>
+                                                    <TableCell align="right">{"Gel"}</TableCell>
+                                                    <TableCell align="right">{247.00}</TableCell>
+                                                    <TableCell align="right">{22}</TableCell>
+                                                    <TableCell align="right">{12}</TableCell>
+                                                    <TableCell align="right">{100}</TableCell>
+                                                    <TableCell align="right">{150}</TableCell>
+                                                    <TableCell align="right">{30}</TableCell>
+
+                                                </TableRow>
+
+                                            </TableBody>
+                                        </Table>
+                                    </TableContainer>
+
+                                </div>
+
+                                <Dialog
+                                    visible={visible}
+                                    
+                                    onHide={() => setVisible(false)}
+                                    draggable={false}
+                                    resizable={false}
+                                    modal={true}
+                                >
+                                    <div className='card'>
+
+                                        <p className='p'>Stock details-Branch wise</p>
+
+                                        <div className='card-body d-flex'>
+                                            <div className='col-log-4'>
+                                                <label className=' m-2 g-2'>Item Name</label>
                                                 <TextField
+                                                    id="outlined-size-small"
+                                                    size="small"
+                                                />
 
+                                                <br></br>
+                                                <label className='mx-2'>item unit</label>
+                                                <TextField
+                                                    className='mx-2'
+                                                    type='date'
+                                                    id="outlined-size-small"
+                                                    size="small"
+                                                />
+                                                <TextField
+                                                    className='g-1'
+                                                    type='date'
                                                     id="outlined-size-small"
                                                     size="small"
                                                 />
                                             </div>
+                                            <div className='col'>
+
+                                                <label className=''>Item Category</label>
+                                                <TextField
+                                                    className='mx-2'
+                                                    id="outlined-size-small"
+                                                    size="small"
+                                                />
+                                                <label className=' m-2 g-2 '>Recorder Level</label>
+                                                <TextField
+                                                    id="outlined-size-small"
+                                                    size="small"
+                                                />
+
+                                                <br></br>
+                                                <div className='mt-2'>
+                                                    <label className='mx-3'>Total Stock</label>
+                                                    <TextField
+
+                                                        id="outlined-size-small"
+                                                        size="small"
+                                                    />
+                                                </div>
+
+                                            </div>
 
                                         </div>
+                                        <div className='table-card-container'>
+                                            <TableContainer component={Paper} className='TableContainer'>
+                                                <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+                                                    <TableHead className='tableHead'>
+                                                        <TableRow className='tableRow'>
+                                                            <TableCell align="right">S.No</TableCell>
+                                                            <TableCell align="right" >Barcode#</TableCell>
+                                                            <TableCell align="right" > (In Purchase Unit)</TableCell>
+                                                            <TableCell align="right" >Item Price</TableCell>
+                                                            <TableCell align="right" >Sale Price</TableCell>
+                                                            <TableCell align="right" >Expiry Date</TableCell>
+                                                            <TableCell align="right" > Status</TableCell>
+                                                            <TableCell align="right" >Barcode</TableCell>
 
+
+                                                        </TableRow>
+                                                    </TableHead>
+                                                    <TableBody>
+
+                                                        <TableRow
+
+                                                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                                        >
+
+                                                            <TableCell align="right">{1}</TableCell>
+                                                            <TableCell align="right">{2646546}</TableCell>
+                                                            <TableCell align="right">{"Gel"}</TableCell>
+                                                            <TableCell align="right">{'Anbu'}</TableCell>
+                                                            <TableCell align="right" >{247.00}</TableCell>
+                                                            <TableCell align="right">{22}</TableCell>
+                                                            <TableCell align="right">{12}</TableCell>
+                                                            <TableCell align="right">{100}</TableCell>
+
+
+
+
+
+                                                        </TableRow>
+                                                        <TableRow>
+                                                            <TableCell align="right">{1}</TableCell>
+                                                            <TableCell align="right">{2646546}</TableCell>
+                                                            <TableCell align="right">{"Gel"}</TableCell>
+                                                            <TableCell align="right">{247.00}</TableCell>
+                                                            <TableCell align="right">{22}</TableCell>
+                                                            <TableCell align="right">{12}</TableCell>
+                                                            <TableCell align="right">{100}</TableCell>
+                                                            <TableCell align="right">{150}</TableCell>
+
+
+                                                        </TableRow>
+
+                                                    </TableBody>
+                                                </Table>
+                                            </TableContainer>
+                                        </div>
+                                        <div className='card mt-5'>
+                                        <p className='p'>Department wise stock details</p>
+
+                                        <div className='card-body d-flex'>
+                                            <div className='col-log-4'>
+                                                <label className=' m-2 g-2'>Item Name</label>
+                                                <TextField
+                                                    id="outlined-size-small"
+                                                    size="small"
+                                                />
+
+                                                <br></br>
+                                                <label className='mx-2'>item unit</label>
+                                                <TextField
+                                                    className='mx-2'
+                                                    type='date'
+                                                    id="outlined-size-small"
+                                                    size="small"
+                                                />
+                                                <TextField
+                                                    className='g-1'
+                                                    type='date'
+                                                    id="outlined-size-small"
+                                                    size="small"
+                                                />
+                                            </div>
+                                            <div className='col'>
+
+                                                <label className=''>Item Category</label>
+                                                <TextField
+                                                    className='mx-2'
+                                                    id="outlined-size-small"
+                                                    size="small"
+                                                />
+                                                <label className=' m-2 g-2 '>Recorder Level</label>
+                                                <TextField
+                                                    id="outlined-size-small"
+                                                    size="small"
+                                                />
+
+                                                <br></br>
+                                                <div className='mt-2'>
+                                                    <label className='mx-3'>Total Stock</label>
+                                                    <TextField
+
+                                                        id="outlined-size-small"
+                                                        size="small"
+                                                    />
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div className='table-card-container'>
+                                            <TableContainer component={Paper} className='TableContainer'>
+                                                <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+                                                    <TableHead className='tableHead'>
+                                                        <TableRow className='tableRow'>
+                                                            <TableCell align="right">S.No</TableCell>
+                                                            <TableCell align="right" >Barcode#</TableCell>
+                                                            <TableCell align="right" > (In Purchase Unit)</TableCell>
+                                                            <TableCell align="right" >Item Price</TableCell>
+                                                            <TableCell align="right" >Sale Price</TableCell>
+                                                            <TableCell align="right" >Expiry Date</TableCell>
+                                                            <TableCell align="right" > Status</TableCell>
+                                                            <TableCell align="right" >Barcode</TableCell>
+
+
+                                                        </TableRow>
+                                                    </TableHead>
+                                                    <TableBody>
+
+                                                        <TableRow
+
+                                                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                                        >
+
+                                                            <TableCell align="right">{1}</TableCell>
+                                                            <TableCell align="right">{2646546}</TableCell>
+                                                            <TableCell align="right">{"Gel"}</TableCell>
+                                                            <TableCell align="right">{'Anbu'}</TableCell>
+                                                            <TableCell align="right" >{247.00}</TableCell>
+                                                            <TableCell align="right">{22}</TableCell>
+                                                            <TableCell align="right">{12}</TableCell>
+                                                            <TableCell align="right">{100}</TableCell>
+
+
+
+
+
+                                                        </TableRow>
+                                                        <TableRow>
+                                                            <TableCell align="right">{1}</TableCell>
+                                                            <TableCell align="right">{2646546}</TableCell>
+                                                            <TableCell align="right">{"Gel"}</TableCell>
+                                                            <TableCell align="right">{247.00}</TableCell>
+                                                            <TableCell align="right">{22}</TableCell>
+                                                            <TableCell align="right">{12}</TableCell>
+                                                            <TableCell align="right">{100}</TableCell>
+                                                            <TableCell align="right">{150}</TableCell>
+
+
+                                                        </TableRow>
+
+                                                    </TableBody>
+                                                </Table>
+                                            </TableContainer>
+                                        </div>
                                     </div>
-                                    <div className='table-card-container'>
-                                        <TableContainer component={Paper} className='TableContainer'>
-                                            <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
-                                                <TableHead className='tableHead'>
-                                                    <TableRow className='tableRow'>
-                                                        <TableCell align="right">S.No</TableCell>
-                                                        <TableCell align="right" >Barcode#</TableCell>
-                                                        <TableCell align="right" > (In Purchase Unit)</TableCell>
-                                                        <TableCell align="right" >Item Price</TableCell>
-                                                        <TableCell align="right" >Sale Price</TableCell>
-                                                        <TableCell align="right" >Expiry Date</TableCell>
-                                                        <TableCell align="right" > Status</TableCell>
-                                                        <TableCell align="right" >Barcode</TableCell>
-
-
-                                                    </TableRow>
-                                                </TableHead>
-                                                <TableBody>
-                                                   
-                                                    <TableRow
-                                                     
-                                                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                                    >
-
-                                                        <TableCell align="right">{1}</TableCell>
-                                                        <TableCell align="right">{2646546}</TableCell>
-                                                        <TableCell align="right">{"Gel"}</TableCell>
-                                                        <TableCell align="right">{'Anbu'}</TableCell>
-                                                        <TableCell align="right" onClick={handleShow}>{247.00}</TableCell>
-                                                        <TableCell align="right">{22}</TableCell>
-                                                        <TableCell align="right">{12}</TableCell>
-                                                        <TableCell align="right">{100}</TableCell>
-                                                      
-
-
-
-
-                                                    </TableRow>
-                                                    <TableRow>
-                                                        <TableCell align="right">{1}</TableCell>
-                                                        <TableCell align="right">{2646546}</TableCell>
-                                                        <TableCell align="right">{"Gel"}</TableCell>
-                                                        <TableCell align="right">{247.00}</TableCell>
-                                                        <TableCell align="right">{22}</TableCell>
-                                                        <TableCell align="right">{12}</TableCell>
-                                                        <TableCell align="right">{100}</TableCell>
-                                                        <TableCell align="right">{150}</TableCell>
-                                                      
-
-                                                    </TableRow>
-
-                                                </TableBody>
-                                            </Table>
-                                        </TableContainer>
                                     </div>
-                                </div>
-                            </Dialog>
+                                </Dialog>
 
 
 
-                        </div>
-                    )}
+                            </div>
+                        )}
+                    </motion.div>
 
 
 
@@ -380,7 +514,7 @@ const Itemstatus = () => {
                                     <TableCell align="right" >Item Code</TableCell>
                                     <TableCell align="right" >Item Name</TableCell>
                                     <TableCell align="right" >Category</TableCell>
-                                  
+
                                     <TableCell align="right" >Item Price</TableCell>
                                     <TableCell align="right" >Recorder Level</TableCell>
                                     <TableCell align="right" >Item Unit</TableCell>
@@ -391,16 +525,16 @@ const Itemstatus = () => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                
+
                                 <TableRow
-                             
+
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 >
 
                                     <TableCell align="right">{1}</TableCell>
                                     <TableCell align="right">{2646546}</TableCell>
                                     <TableCell align="right">{"Gel"}</TableCell>
-                                   
+
                                     <TableCell align="right">{247.00}</TableCell>
                                     <TableCell align="right">{22}</TableCell>
                                     <TableCell align="right">{12}</TableCell>
@@ -415,7 +549,7 @@ const Itemstatus = () => {
                                     <TableCell align="right">{1}</TableCell>
                                     <TableCell align="right">{2646546}</TableCell>
                                     <TableCell align="right">{"Gel"}</TableCell>
-                                 
+
                                     <TableCell align="right">{247.00}</TableCell>
                                     <TableCell align="right">{22}</TableCell>
                                     <TableCell align="right">{12}</TableCell>
@@ -424,7 +558,7 @@ const Itemstatus = () => {
                                     <TableCell align="right">{30}</TableCell>
 
                                 </TableRow>
-                          
+
                             </TableBody>
                         </Table>
                     </TableContainer>

@@ -13,13 +13,15 @@ const Stockadjust1 = () => {
 
 
             <div className='container-fluid'>
-                <div className='card'>
+                <div className=''>
 
+                   
+                    <div className='content'>
                     <p className='p1'>Stock Adjustment</p>
                     <div className='d-flex mt-3'>
                         <label className=' mx-1 g-2'>Adjustment Date</label>
                         <TextField
-                            className='inputs'
+                            className='inputsl'
                             id="outlined-size-small"
                             size="small"
                         />
@@ -27,7 +29,7 @@ const Stockadjust1 = () => {
                     <div className='d-flex mt-3'>
                         <label className=' mx-1 g-2'>Adjustment No</label>
                         <TextField
-                            className='inputs1'
+                            className='inputsl1'
                             id="outlined-size-small"
                             size="small"
                         />
@@ -36,7 +38,7 @@ const Stockadjust1 = () => {
                         <label className=' mx-1 g-2'>Office-Branch</label>
                         <FormControl sx={{ m: 1, width: 250 }}>
                             <Select
-                                className='inputs2'
+                                className='inputsl2'
                                 labelId="demo-multiple-name-label"
                                 id="demo-multiple-name"
 
@@ -50,7 +52,7 @@ const Stockadjust1 = () => {
                         <label className=' mx-1 g-2'>Speciality</label>
                         <FormControl sx={{ m: 1, width: 300 }}>
                             <Select
-                                className='inputs3'
+                                className='inputsl3'
                                 labelId="demo-multiple-name-label"
                                 id="demo-multiple-name"
 
@@ -62,7 +64,7 @@ const Stockadjust1 = () => {
                     <div className='d-flex mt-2'>
                         <label className=' mx-2 g-2'>Debit/Credit</label>
                         <TextField
-                            className='inputs4'
+                            className='inputsl4'
                             id="outlined-size-small"
                             size="small"
                         />
@@ -71,7 +73,7 @@ const Stockadjust1 = () => {
                         < label className='mx-3'>Purchase Accounts</label>
                         <FormControl sx={{ m: 1, width: 280 }}>
                             <Select
-                                className='inputs5'
+                                className='inputsl5'
                                 labelId="demo-multiple-name-label"
                                 id="demo-multiple-name"
                             >
@@ -83,14 +85,14 @@ const Stockadjust1 = () => {
                     <div className='d-flex mt-2'>
                         <label className=' mx-1 g-2'>Refernce NO</label>
                         <TextField
-                            className='inputs6'
+                            className='inputsl6'
                             id="outlined-size-small"
                             size="small"
                         />
                     </div>
                     <div className='d-flex mt-2'>
                         <label className=' mx-1 g-2'>Remarks</label>
-                        <textarea className='inputs7 mx-4' />
+                        <textarea className='inputsl7 mx-4' />
                     </div>
 
 
@@ -103,6 +105,9 @@ const Stockadjust1 = () => {
                         </button>
                     </Box>
 
+
+                    </div>
+                  
 
 
                 </div>

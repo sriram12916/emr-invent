@@ -24,7 +24,8 @@
      color: white ;
      border-radius: 5px;
    margin-left: 5px;
-   border-color: rgb(30, 145, 190);
+   border-color:   rgb(30, 145, 190);
+   text-decoration: none;
 }
 .card{
     background-color: rgb(245, 245, 245);
@@ -47,12 +48,84 @@
 }
 .card{
     margin-top: 5px;
+   
 }
 .p-dialog-header{
     padding: 0px;
 }
+.inputs1{
 
-@media (max-width:768px){
+    width: 41% !important;
     
-
 }
+.inputs2{
+    margin-right: 10px !important;
+    width: 41% !important;
+    
+}
+.inputs3{
+
+    width: 30% !important;
+    margin-left: -50px;
+
+    
+}.inputs4{
+
+    width: 30% !important;
+    margin-left: 60px !important;
+    
+}
+.input-text{
+    width: 41%;
+    margin-left: 20px !important;
+}
+.labels{
+    margin-right: 70px;
+}
+.labels2{
+    margin-left: 29px;
+}
+
+.labelpro{
+    margin-right: 2px;
+}
+.card-details{
+    margin: 5px;
+    
+}
+.lablestock{
+    margin-right: 6px; 
+}
+
+@media (max-width:1024px){
+    
+.input-text{
+    width: 41%;
+}
+.inputs3{
+
+    width: 40% !important;
+    margin-left: -50px;
+
+    
+}.inputs4{
+
+    width: 40% !important;
+   
+    
+}
+.labels{
+    margin-right: 70px;
+}
+.labels2{
+    margin-right: 0px;
+}
+.g-1{
+    display: flex;
+    margin-left: 100px;
+}
+.date{
+    /* display: flex; */
+}
+}
+

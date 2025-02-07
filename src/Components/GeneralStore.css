@@ -20,16 +20,28 @@
  
   
 }
-.sidebar{
-    padding-top: 10px;
-    height: 100vh;
-    background-color: rgb(10, 141, 192);
-    width: 20%;
 
-   
-}
+ 
+
 .item-text{
     color: white;
     padding: 7px;
    
+}
+/* .a{
+    padding: 10px !important;
+} */
+ .MuiBox-root{
+    gap:30px !important
+ }
+ .active:hover{
+    color: grey;
+ }
+ @media (max-width:768px){
+    .MuiBox-root{
+        gap:20px !important
+     }
+     .active{
+        font-size: 15px;
+     }
 }
